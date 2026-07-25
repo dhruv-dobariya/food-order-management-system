@@ -1,15 +1,96 @@
-.food-display{
-    margin-top: 30px;
+/* ============================
+   FOOD DISPLAY GRID
+   ============================ */
+.food-display {
+  padding: 32px 0;
+}
 
+.food-display-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  gap: 12px;
 }
-.food-display >h2{
-    font-size: max(2vw,24px);
-    font-weight: 600px;
+
+.food-display-heading h2 {
+  font-size: clamp(20px, 2.8vw, 32px);
+  font-weight: 800;
+  color: var(--text-dark);
+  letter-spacing: -0.02em;
 }
-.food-display-list{
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(240px,1fr));
-    margin-top: 30px;
-    gap: 30px;
-    row-gap: 50px;
+
+.food-display-heading h2 span {
+  color: var(--primary);
+}
+
+.food-display-count {
+  font-size: 14px;
+  color: var(--text-light);
+  background: var(--primary-bg);
+  border: 1px solid rgba(255,69,0,0.2);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* ---- Grid ---- */
+.food-display-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+/* ---- Empty State ---- */
+.food-display-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.food-display-empty .empty-icon {
+  font-size: 56px;
+}
+
+.food-display-empty h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.food-display-empty p {
+  font-size: 14px;
+}
+
+/* ============================
+   RESPONSIVE FOOD DISPLAY
+   ============================ */
+@media (max-width: 900px) {
+  .food-display-list {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .food-display-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .food-display-heading h2 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 400px) {
+  .food-display-list {
+    grid-template-columns: 1fr;
+  }
 }

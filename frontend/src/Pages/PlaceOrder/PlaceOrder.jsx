@@ -113,7 +113,7 @@ const PlaceOrder = () => {
     <>
       <form onSubmit={placeOrder} className='place-order'>
         <div className="place-order-left">
-          <p className="title">Delivery Information</p>
+          <p className="title">📦 Delivery Information</p>
 
           <div className="multi-fields">
             <input required name="firstName" onChange={onChangeHandler} value={data.firstName} type="text" placeholder='First name' />
@@ -161,7 +161,8 @@ const PlaceOrder = () => {
               </div>
 
             </div>
-            <button type='submit' >PROCEED TO PAYMENT</button>
+            <button type='submit'>PROCEED TO PAYMENT →</button>
+            <p className="place-order-secure">🔒 Secure payment via Razorpay</p>
           </div>
         </div>
       </form>
