@@ -1,5 +1,7 @@
 {
-  "devDependencies": {
-    "vite": "^8.1.5"
+  "name": "food-order-management-system",
+  "private": true,
+  "scripts": {
+    "build": "npm --prefix frontend install && npm --prefix frontend run build"
   }
 }
