@@ -1,17 +1,23 @@
 import React, { useContext } from 'react'
 import './Cart.css'
 import { StoreContext } from '../../context/StoreContext'
-import { useContext as uc } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 
 const Cart = () => {
   const { cartItems, food_list, removeFromCart, addTocart, getToatalCartAmount, url } = useContext(StoreContext)
   const navigate = useNavigate()
 
-  const cartFoods = food_list.filter(item => cartItems[item._id] > 0)
+  const cartFoods = food_list.filter(item => (cartItems[item._id] || 0) > 0)
   const subtotal = getToatalCartAmount()
   const delivery = subtotal === 0 ? 0 : 2
   const total = subtotal === 0 ? 0 : subtotal + delivery
+
+  const getImageSrc = (image) => {
+    if (typeof image === 'string' && url && !image.startsWith('/') && !image.startsWith('http') && !image.startsWith('data:')) {
+      return `${url}/images/${image}`
+    }
+    return image
+  }
 
   if (cartFoods.length === 0) {
     return (
@@ -48,7 +54,7 @@ const Cart = () => {
       {cartFoods.map((item, index) => (
         <div key={index}>
           <div className="cart-items-item">
-            <img src={`${url}/images/${item.image}`} alt={item.name} />
+            <img src={getImageSrc(item.image)} alt={item.name} />
             <p className="item-name">{item.name}</p>
             <p className="item-price">${item.price}</p>
             <div className="cart-qty-control">

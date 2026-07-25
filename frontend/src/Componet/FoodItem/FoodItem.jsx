@@ -7,12 +7,17 @@ const FoodItem = ({ id, name, price, description, image }) => {
   const { cartItems, addTocart, removeFromCart, url } = useContext(StoreContext)
   const qty = cartItems[id] || 0
 
+  // Resolve image source dynamically (static bundled image vs API upload path)
+  const imageSrc = (typeof image === 'string' && url && !image.startsWith('/') && !image.startsWith('http') && !image.startsWith('data:'))
+    ? `${url}/images/${image}`
+    : image
+
   return (
     <div className='food-item'>
       <div className="food-item-img-container">
         <img
           className="food-item-image"
-          src={`${url}/images/${image}`}
+          src={imageSrc}
           alt={name}
           loading="lazy"
         />
