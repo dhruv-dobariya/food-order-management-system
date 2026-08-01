@@ -7,7 +7,9 @@ import { StoreContext } from '../../context/StoreContext'
 const Navbar = ({ setShowLogin }) => {
     const [menu, setMenu] = useState("home")
     const [mobileOpen, setMobileOpen] = useState(false)
-    const { getToatalCartAmount, token, setToken } = useContext(StoreContext)
+    
+    // Fixed Typo: getTotalCartAmount
+    const { getTotalCartAmount, token, setToken } = useContext(StoreContext)
     const navigate = useNavigate()
 
     const logout = () => {
@@ -40,7 +42,7 @@ const Navbar = ({ setShowLogin }) => {
                         <Link to='/cart'>
                             <img src={assets.basket_icon} alt="Cart" />
                         </Link>
-                        {getToatalCartAmount() > 0 && <div className="dot"></div>}
+                        {getTotalCartAmount() > 0 && <div className="dot"></div>}
                     </div>
 
                     {!token
@@ -77,7 +79,7 @@ const Navbar = ({ setShowLogin }) => {
                     <a href='#explore-menu' onClick={() => { setMenu("menu"); closeMobile() }}>🍽️ Menu</a>
                     <a href='#app-download' onClick={() => { setMenu("mobile-app"); closeMobile() }}>📱 Mobile App</a>
                     <a href='#footer' onClick={() => { setMenu("contact-us"); closeMobile() }}>📞 Contact</a>
-                    <Link to='/cart' onClick={closeMobile}>🛒 Cart {getToatalCartAmount() > 0 && `($${getToatalCartAmount()})`}</Link>
+                    <Link to='/cart' onClick={closeMobile}>🛒 Cart {getTotalCartAmount() > 0 && `($${getTotalCartAmount()})`}</Link>
                     {token
                         ? <>
                             <span onClick={() => { navigate('/myorders'); closeMobile() }}>📦 My Orders</span>
