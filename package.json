@@ -5,6 +5,9 @@
     "start": "npm --prefix backend start",
     "backend": "npm --prefix backend run server",
     "frontend": "npm --prefix frontend run dev",
-    "build": "npm --prefix frontend install && npm --prefix frontend run build"
+    "build": "cd frontend && npm install && npm run build && cpx -r dist/* ../dist"
+  },
+  "devDependencies": {
+    "cpx": "^1.5.0"
   }
 }
