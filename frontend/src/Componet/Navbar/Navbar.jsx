@@ -8,8 +8,7 @@ const Navbar = ({ setShowLogin }) => {
     const [menu, setMenu] = useState("home")
     const [mobileOpen, setMobileOpen] = useState(false)
     
-    // Fixed Typo: getTotalCartAmount
-    const { getTotalCartAmount, token, setToken } = useContext(StoreContext)
+    const { getToatalCartAmount, token, setToken } = useContext(StoreContext)
     const navigate = useNavigate()
 
     const logout = () => {
@@ -42,7 +41,7 @@ const Navbar = ({ setShowLogin }) => {
                         <Link to='/cart'>
                             <img src={assets.basket_icon} alt="Cart" />
                         </Link>
-                        {getTotalCartAmount() > 0 && <div className="dot"></div>}
+                        {getToatalCartAmount() > 0 && <div className="dot"></div>}
                     </div>
 
                     {!token
