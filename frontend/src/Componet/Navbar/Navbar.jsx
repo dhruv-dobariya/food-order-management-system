@@ -78,7 +78,7 @@ const Navbar = ({ setShowLogin }) => {
                     <a href='#explore-menu' onClick={() => { setMenu("menu"); closeMobile() }}>🍽️ Menu</a>
                     <a href='#app-download' onClick={() => { setMenu("mobile-app"); closeMobile() }}>📱 Mobile App</a>
                     <a href='#footer' onClick={() => { setMenu("contact-us"); closeMobile() }}>📞 Contact</a>
-                    <Link to='/cart' onClick={closeMobile}>🛒 Cart {getTotalCartAmount() > 0 && `($${getTotalCartAmount()})`}</Link>
+                    <Link to='/cart' onClick={closeMobile}>🛒 Cart {getToatalCartAmount() > 0 && `($${getToatalCartAmount()})`}</Link>
                     {token
                         ? <>
                             <span onClick={() => { navigate('/myorders'); closeMobile() }}>📦 My Orders</span>
